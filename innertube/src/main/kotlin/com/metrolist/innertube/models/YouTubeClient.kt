@@ -85,13 +85,17 @@ data class YouTubeClient(
             useSignatureTimestamp = true
         )
 
+        /**
+         * Embedded player that can bypass age-restriction.
+         * Does not require login for age-restricted content.
+         */
         val TVHTML5_SIMPLY_EMBEDDED_PLAYER = YouTubeClient(
             clientName = "TVHTML5_SIMPLY_EMBEDDED_PLAYER",
             clientVersion = "2.0",
             clientId = "85",
             userAgent = "Mozilla/5.0 (PlayStation; PlayStation 4/12.02) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15",
             loginSupported = true,
-            loginRequired = true,
+            loginRequired = false,
             useSignatureTimestamp = true,
             isEmbedded = true,
         )
