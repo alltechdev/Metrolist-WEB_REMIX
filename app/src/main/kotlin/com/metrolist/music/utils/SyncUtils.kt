@@ -261,11 +261,10 @@ class SyncUtils @Inject constructor(
         }
     }
 
-    // Uploaded feature is temporarily disabled
     fun syncUploadedSongs() {
-        // syncScope.launch {
-        //     syncChannel.send(SyncOperation.UploadedSongs)
-        // }
+        syncScope.launch {
+            syncChannel.send(SyncOperation.UploadedSongs)
+        }
     }
 
     fun syncLikedAlbums() {
@@ -274,11 +273,10 @@ class SyncUtils @Inject constructor(
         }
     }
 
-    // Uploaded feature is temporarily disabled
     fun syncUploadedAlbums() {
-        // syncScope.launch {
-        //     syncChannel.send(SyncOperation.UploadedAlbums)
-        // }
+        syncScope.launch {
+            syncChannel.send(SyncOperation.UploadedAlbums)
+        }
     }
 
     fun syncArtistsSubscriptions() {
@@ -302,8 +300,7 @@ class SyncUtils @Inject constructor(
     fun syncAllAlbums() {
         syncScope.launch {
             syncChannel.send(SyncOperation.LikedAlbums)
-            // Uploaded feature is temporarily disabled
-            // syncChannel.send(SyncOperation.UploadedAlbums)
+            syncChannel.send(SyncOperation.UploadedAlbums)
         }
     }
 
@@ -329,11 +326,9 @@ class SyncUtils @Inject constructor(
 
     suspend fun syncLikedSongsSuspend() = executeSyncLikedSongs()
     suspend fun syncLibrarySongsSuspend() = executeSyncLibrarySongs()
-    // Uploaded feature is temporarily disabled
-    suspend fun syncUploadedSongsSuspend() { /* executeSyncUploadedSongs() */ }
+    suspend fun syncUploadedSongsSuspend() = executeSyncUploadedSongs()
     suspend fun syncLikedAlbumsSuspend() = executeSyncLikedAlbums()
-    // Uploaded feature is temporarily disabled
-    suspend fun syncUploadedAlbumsSuspend() { /* executeSyncUploadedAlbums() */ }
+    suspend fun syncUploadedAlbumsSuspend() = executeSyncUploadedAlbums()
     suspend fun syncArtistsSubscriptionsSuspend() = executeSyncArtistsSubscriptions()
     suspend fun syncSavedPlaylistsSuspend() = executeSyncSavedPlaylists()
     suspend fun syncAutoSyncPlaylistsSuspend() = executeSyncAutoSyncPlaylists()
@@ -342,8 +337,7 @@ class SyncUtils @Inject constructor(
 
     suspend fun syncAllAlbumsSuspend() {
         executeSyncLikedAlbums()
-        // Uploaded feature is temporarily disabled
-        // executeSyncUploadedAlbums()
+        executeSyncUploadedAlbums()
     }
 
     suspend fun syncAllArtistsSuspend() {
@@ -368,16 +362,14 @@ class SyncUtils @Inject constructor(
             executeSyncLibrarySongs()
             delay(DB_OPERATION_DELAY_MS)
 
-            // Uploaded feature is temporarily disabled
-            // executeSyncUploadedSongs()
-            // delay(DB_OPERATION_DELAY_MS)
+            executeSyncUploadedSongs()
+            delay(DB_OPERATION_DELAY_MS)
 
             executeSyncLikedAlbums()
             delay(DB_OPERATION_DELAY_MS)
 
-            // Uploaded feature is temporarily disabled
-            // executeSyncUploadedAlbums()
-            // delay(DB_OPERATION_DELAY_MS)
+            executeSyncUploadedAlbums()
+            delay(DB_OPERATION_DELAY_MS)
 
             executeSyncArtistsSubscriptions()
             delay(DB_OPERATION_DELAY_MS)
